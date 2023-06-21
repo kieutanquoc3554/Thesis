@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải thuật sắp xếp Cocktail</title>
+    <link rel="short icon" href="./img/Can_Tho_University_Logo.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <section class="head">Giải thuật sắp xếp Cocktail - Cocktail Shaker Sort Algorithms</section>
+    <section class="information">
+        Để hiểu rõ về giải thuật sắp xếp Cocktail, vui lòng xem tại đây:
+        <a href="https://vi.wikipedia.org/wiki/Thu%E1%BA%ADt_to%C3%A1n_s%E1%BA%AFp_x%E1%BA%BFp_cocktail" target="_blank"
+            style="color: red;">Giải thuật sắp xếp Cocktail</a>
+    </section>
+    <section class="report_document">
+        Nếu có thắc mắc về cách hoạt động của trang web, vui lòng <b>tải xuống</b> bản báo cáo niên luận <b>tại đây:</b>
+        <a style="color: red;" href="./report/report.docx" download>Click vào đây để tải xuống</a>
+    </section>
+    <section class="typeNumber">
+        <p style="padding-top: 4px; margin: 0;"><b>Nhập số phần tử cần sắp xếp tại đây</b>: <input type="number"
+                id="quantity" placeholder="Nhập số lớn hơn 0" onkeypress="return runScript(event)"
+                onkeydown="checkTyping()" value="">
+        </p>
+        <p style="padding-top: 4px; margin: 0;"><input type="checkbox" name="" id="checkbox_type"> Nhập dữ liệu đầu vào
+            (Nếu muốn <b>tạo tự động</b>, không cần chọn mục này)</i></p>
+        <div class="type_data" id="data_sort"></div>
+        <p style="padding-top: 4px; margin: 0;"><b>Nếu muốn nhập từ tập tin, vui lòng thực hiện tại đây</b>: <i
+                class="fa-solid fa-circle-info"
+                title="Nội dung tập tin phải gồm 2 dòng, dòng đầu chứa số phần tử cần sắp xếp. Dòng 2 chứa lần lượt các số cần sắp xếp (Cách nhau bởi khoảng trắng)">
+            </i> <input type="file" name="" id="uploadFile">
+        </p>
+        <p id="output"></p>
+        <p style="color: red; padding-top: 4px; margin: -15px;">Khi người dùng <b><u>không nhập gì</u></b>, hệ thống mặc
+            định số phần tử sắp xếp sẽ là
+            <b>20</b> giá trị
+        </p>
+    </section>
+    <section class="data-container" id="container"></section>
+    <section class="message"></section>
+    <section id="ele"></section>
+    <div style="margin: auto; width: fit-content; padding-bottom: 45px;">
+        <button class="btn1 button-19" onclick="checkContainer(), checkQuantity()" id="Button1"
+            title="Tạo lại dãy số mới">
+            <i class="fa-solid fa-arrows-rotate"></i>
+        </button>
+        <button class="btn1-1 button-19" onclick="checkFile(), checkAddData(), checkQuantity();" id="Button1-1"
+            title="Nhập vào dãy số mới">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <button class="btn2 button-19" onclick="checkContainerWithSort(),CocktailSort()" id="Button2"
+            title="Chạy chương trình">
+            <i class="fa-solid fa-play"></i>
+        </button>
+        <button class="btn3 button-19" onclick="checkContainerWithSort()" id="Button3" title="Lùi 1 bước"><i
+                class="fa-solid fa-backward"></i></button>
+        <button class="btn4 button-19" onclick="checkContainerWithSort()" id="Button4" title="Tiến 1 bước"><i
+                class="fa-solid fa-forward"></i></button>
+        <button class="btn5 button-19" onclick="checkContainerWithSort()" id="Button5" title="Tạm dừng"><i
+                class="fa-solid fa-stop"></i></button>
+        <button class="btn6 button-19" onclick="del(), disableStop();" id="Button6" title="Xóa"><i
+                class="fa-solid fa-trash"></i></button>
+        <button class="btn7 button-19" onclick="checkContainerWithSort()" id="Button7" title="Tiếp tục"><i
+                class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</body>
+<footer>
+    <div class="footer_image">
+        <a href="https://www.facebook.com/quockth30121995" target="_blank">
+            <img class="footer_imageItem" src="./img/305815032_798817444877469_6746484678761315002_n.jpg" alt="">
+        </a>
+    </div>
+    <div class="footer_information">
+        <p><b>© Trường Công nghệ Thông tin và Truyền thông - Đại học Cần Thơ</b></p>
+        <p>Đề tài Niên luận cơ sở ngành <b>Kỹ thuật phần mềm</b></p>
+        <p>Sinh viên thực hiện: <b>Kiều Tấn Quốc</b></p>
+        <p>Mã số sinh viên: <b>B2012132</b></p>
+    </div>
+    <div class="footer_logo">
+        <a href="https://www.ctu.edu.vn/" target="_blank">
+            <img src="./img/Can_Tho_University_Logo.png" alt="" class="footer_imageItem2">
+        </a>
+    </div>
+</footer>
+<script src="./script.js"></script>
+
+</html>
